@@ -24,4 +24,4 @@ O **RK-SIEM** tem dois módulos principais:
 
 ###### 6. Onde encontro mais informações sobre o RK-SIEM?
 
-Os arquivos do projeto são mantidos no [GitHub](https://github.com/ricardokleber/rk-siem) e no [GitLab](https://gitlab.ifrncn.com.br/rk/rk-siem) do autor e vídeos com tutoriais e dicas no canal Youtube [@RKIFRNCN](https://www.exemplo.com).
+Os arquivos do projeto são mantidos no [GitHub](https://github.com/ricardokleber/rk-siem) e no [GitLab](https://gitlab.ifrncn.com.br/ricardokleber/rk-siem) do autor e vídeos com tutoriais e dicas no canal Youtube [@RKIFRNCN](https://www.youtube.com/@rkifrn).
