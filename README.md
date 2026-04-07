@@ -48,3 +48,6 @@ http://localhost:5601
 ![](assets/rk-siem-login.png)
 
 **Username:** *admin* | **Password:** *admin*
+
+**Vídeos do RK-SIEM (Youtube):**
+<a href="https://www.youtube.com/playlist?list=PLzEiYA7yCrq9-Dub9qwmFJFbh2NMoOjTh" target="_blank"><img width="400" height="120" alt="assistavideo" src="assets/rk-siem-youtube.png" /></a>
