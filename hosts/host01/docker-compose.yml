@@ -1,0 +1,8 @@
+services:
+ rk-siem-host01:
+    image: ricardokleber/rk-siem-host01:latest
+    container_name: rk-siem-host01
+    hostname: rk-siem-host01
+    tty: true
+    stdin_open: true
+    restart: always
