@@ -1,0 +1,22 @@
+services:
+ rk-siem-host03:
+#    image: ricardokleber/rk-siem-host03:latest
+    image: docker.ifrncn.com.br/rk/rk-windows:latest
+    container_name: rk-siem-host03
+    devices:
+      - /dev/kvm # Essencial para aceleração de hardware (KVM)
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8006:8006 # Interface Web (NoVNC)
+    volumes:
+      - ./dados:/storage
+    stop_grace_period: 2m
+    restart: on-failure
+    environment:
+      VERSION: "7u" # Define a versão (win11, win10, etc)
+      RAM_SIZE: "2G"   # Mínimo recomendado para Win11
+      CPU_CORES: "2"   # Quantidade de núcleos
+      DISK_SIZE: "15G" # Tamanho do disco virtual
+      USERNAME: "admin"
+      PASSWORD: "admin"

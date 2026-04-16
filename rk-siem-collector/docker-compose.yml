@@ -1,0 +1,9 @@
+services:
+  rk-siem-collector:
+    image: opensearchproject/data-prepper:2.15.0
+    container_name: rk-siem-collector
+    volumes:
+      - ./log_pipeline.yaml:/usr/share/data-prepper/pipelines/log_pipeline.yaml
+      - ./rk-siem-collector-config.yaml:/usr/share/data-prepper/config/data-prepper-config.yaml
+    ports:
+      - 2021:2021
