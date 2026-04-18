@@ -57,6 +57,8 @@ action(type="omelasticsearch"
 	errorfile="/var/log/rsyslog-erros.log")
 ```
 
+***
+
 **Roteiro Passo a Passo:**
 
 **1. Baixe o Repositório GIT do projeto**
@@ -82,6 +84,11 @@ docker compose up -d rk-siem-core
 ```
 docker compose up -d rk-siem-ui
 ```
+
+**5. Levante o RK-SIEM-HOST01**
+
+```
+docker compose up -d rk-siem-host01
 
 
 ***
