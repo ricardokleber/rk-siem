@@ -1,3 +1,5 @@
+![](../../assets/rk-siem-titulo-ingestao-01.png)
+
 **1. Questões a Considerar: O que vai ser enviado?**
 
 É importante fazer um planejamento sobre O QUE será enviado a partir dos hosts para ser processado e analisado no SIEM.
