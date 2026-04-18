@@ -89,7 +89,21 @@ docker compose up -d rk-siem-ui
 
 ```
 docker compose up -d rk-siem-host01
+```
 
+**6. Entre no HOST01 e ative os serviços RSyslog e SSH**
+
+```
+docker exec -it rk-siem-host01 bash
+```
+
+```
+rsyslogd
+```
+
+```
+service ssh start
+```
 
 ***
 
