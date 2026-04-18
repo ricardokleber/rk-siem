@@ -1,4 +1,4 @@
-**Lab 01 :: Ingestão Direta de Logs (Linux + RSyslog)**
+![](../../assets/rk-siem-titulo-ingestao-lab01.png)
 
 ![](../../assets/lab01-01.png)
 
