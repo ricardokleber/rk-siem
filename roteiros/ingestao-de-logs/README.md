@@ -1,8 +1,4 @@
----
-hide:
-  - toc
----
-#### 1. Questões a Considerar: O que vai ser enviado?
+**1. Questões a Considerar: O que vai ser enviado?**
 
 É importante fazer um planejamento sobre O QUE será enviado a partir dos hosts para ser processado e analisado no SIEM.
 
@@ -16,7 +12,7 @@ Além de Logs, tem sido cada vez mais comum o envio para geranciadores de Logs i
 
 ***
 
-#### 2. Questões a Considerar: Formato de Envio
+**2. Questões a Considerar: Formato de Envio**
 
 Os primeiros gerenciadores de Logs costumavam ser configurados para receber os logs dos hosts em formato "bruto" (sem qualquer filtragem) e então todo o processamento era feito pelo gerenciador (hoje o SIEM).
 
@@ -35,7 +31,7 @@ Uma decisão importante no planejamento é verificar SE os hosts têm essa capac
 
 ***
 
-#### 3. Questões a Considerar: Quando enviar?
+**3. Questões a Considerar: Quando enviar?**
 
 Os SIEMs modernos (e o RK-SIEM naturalmente) têm a capacidade de processar dados praticamente em "tempo real", mas, isso é realmente necessário (e conveniente)?
 
@@ -49,7 +45,7 @@ Dependendo do que se está monitorando pode ser conveniente programar o envio de
 
 ***
 
-#### 4. Questões a Considerar: E depois de enviar?
+**4. Questões a Considerar: E depois de enviar?**
 
 Os Logs depois de serem enviados pelos hosts ao SIEM ainda precisam existir?
 
@@ -65,13 +61,13 @@ Uma outra decisão pode ser a de descartar os logs gerados/armazenados nos hosts
 
 ***
 
-#### 5. Cenários de Ingestão de Logs no RK-SIEM:
+**5. Cenários de Ingestão de Logs no RK-SIEM:**
 
 ![](../../assets/visao-geral-05.png)
 
 ***
 
-#### 6. Lista (não exaustiva) de possibilidade de Ingestão de Logs
+**6. Lista (não exaustiva) de possibilidade de Ingestão de Logs**
 
 <ul>
     <li>Logs no formato JSON (uso de Templates)</li>
@@ -91,22 +87,12 @@ Uma outra decisão pode ser a de descartar os logs gerados/armazenados nos hosts
 
 ***
 
-#### 7. Ingestão de Logs: Visão Geral
+**7. Ingestão de Logs: Visão Geral**
 
 ![](../../assets/visao-geral-06.png)
 
 ***
 
-### Assista à Videoaula explicativa sobre o assunto clicando na imagem abaixo:
+**Assista à Videoaula explicativa sobre o assunto clicando na imagem abaixo:**
 
-???+ example "Ingestão de Logs: Visão Geral"
-    <div style="position: relative; width: 100%; aspect-ratio: 16 / 9;">
-        <iframe 
-            src="https://www.youtube.com/embed/dXznQwfZ-8g?si=Z5k1iPYcDb2euTYG" 
-            title="YouTube video player" 
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-        </iframe>
-    </div>
+<a href="https://www.youtube.com/watch?v=dXznQwfZ-8g" target="_blank"><img width="400" height="120" alt="assistavideo" src="../../assets/rk-siem-youtube.png" /></a>
