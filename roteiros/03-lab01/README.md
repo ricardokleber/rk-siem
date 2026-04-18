@@ -57,6 +57,33 @@ action(type="omelasticsearch"
 	errorfile="/var/log/rsyslog-erros.log")
 ```
 
+**Roteiro Passo a Passo:**
+
+**1. Baixe o Repositório GIT do projeto**
+
+```
+git clone https://gitlab.ifrncn.com.br/ricardokleber/rk-siem.git
+```
+
+**2. Entre no diretório/pasta do projeto**
+
+```
+cd rk-siem
+```
+
+**3. Levante o RK-SIEM-CORE**
+
+```
+docker compose up -d rk-siem-core
+```
+
+**4. Levante o RK-SIEM-UI**
+
+```
+docker compose up -d rk-siem-ui
+```
+
+
 ***
 
 **Assista à Videoaula explicativa sobre o assunto clicando na imagem abaixo:**
