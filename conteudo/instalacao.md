@@ -1,4 +1,4 @@
-![](assets/rk-siem-titulo_instalacao.png)
+![](../assets/rk-siem-titulo_instalacao.png)
 ***
 ### RK-SIEM :: Instalação
 
