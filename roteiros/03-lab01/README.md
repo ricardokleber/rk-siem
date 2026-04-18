@@ -43,6 +43,20 @@ Conteúdo adicionado ao arquivo de configuração do RSyslog (*/etc/rsyslog.conf
         constant(value="\"}")
 ```
 
+Conteúdo adicionado ao arquivo de configuração do RSyslog (*/etc/rsyslog.conf*) para conexão ao RK-SIEM e envio dos Logs autenticando-se com usuário admin/admin:
+
+```
+# Envio para o RK-SIEM-CORE
+
+action(type="omelasticsearch"
+	server="172.19.0.1"
+	serverport="9200"
+	template="json-template"
+	searchIndex="host01-logs"
+	bulkmode="on"
+	errorfile="/var/log/rsyslog-erros.log")
+```
+
 ***
 
 **Assista à Videoaula explicativa sobre o assunto clicando na imagem abaixo:**
