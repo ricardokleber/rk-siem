@@ -143,6 +143,24 @@ host01-logs*
 
 ![](../../assets/rk-siem-index-pattern-name.png)
 
+Clique no botão 'Next step' para o próximo passo.
+
+**12. No campo 'Time field' você deverá indicar;selecionar o 'campo de índice de tempo' usado para indexar e exibir os logs. Clicando na seta surgirá o campo padrão utilizado em Logs '@timestamp'. Clique para selecioná-lo**
+
+```
+@timestamp
+```
+![](../../assets/rk-siem-selecao-timestamp.png)
+
+
+(Clique no botão 'Create index pattern' para finalizar a criação do índice).
+
+**Você já poderá visualizar os logs chegando do 'Host01' na seção 'Discover'**
+
+![](../../assets/rk-siem-secao-discover.png)
+
+![](../../assets/rk-siem-discover-logs-host01.png)
+
 ***
 
 **Assista à Videoaula explicativa sobre o assunto clicando na imagem abaixo:**
