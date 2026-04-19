@@ -68,6 +68,7 @@ git clone https://gitlab.ifrncn.com.br/ricardokleber/rk-siem.git
 ```
 
 **2. Entre no diretório/pasta do projeto referente ao LAB01**
+(O docker-compose deste diretório já contém as configurações do HOST01)
 
 ```
 cd rk-siem/roteiros/03-lab01
