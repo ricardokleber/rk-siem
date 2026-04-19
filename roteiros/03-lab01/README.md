@@ -87,6 +87,10 @@ docker compose up -d rk-siem-core
 docker compose up -d rk-siem-ui
 ```
 
+(Após alguns segundos você já poderá subir a interface Web RK-SIEM-UI acessando http://localhost:5061 em um navegador)
+
+![](../../assets/rk-siem-login.png)
+
 **5. Levante o RK-SIEM-HOST01**
 
 ```
@@ -106,6 +110,38 @@ rsyslogd
 ```
 service ssh start
 ```
+
+***
+
+**7. Acesse o RK-SIEM com as credenciais padrão**
+
+```
+Username: admin | Password: admin
+```
+
+**8. No Menu do canto superior esquerdo, na sessão 'Management' selecione 'Dashboards Management'**
+
+![](../../assets/rk-siem-dashboards-management.png)
+
+**9. Selecione a opção 'Index patterns' para configurar o seu primeiro índice no RK-SIEM (para receber os Logs do HOST01)'**
+
+![](../../assets/rk-siem-index-patterns.png)
+
+**10. Clique no botão 'Create index pattern' para Criar seu primeiro índice**
+
+![](../../assets/rk-siem-botao-create-index-pattern.png)
+
+Observe que o Host 01 já enviou logs para o RK-SIEM (A indicação do índice 'host01-logs' já aparece como fonte disponível)
+
+![](../../assets/rk-siem-visualizacao-host01-logs.png)
+
+**11. Preencha o campo 'Index pattern name' indicando que o índice que será criado deverá receber todo o tráfego de índices começando com 'host01-logs'**
+
+```
+host01-logs*
+```
+
+![](../../assets/rk-siem-index-pattern-name.png)
 
 ***
 
