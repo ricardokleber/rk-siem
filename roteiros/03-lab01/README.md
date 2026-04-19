@@ -67,10 +67,10 @@ action(type="omelasticsearch"
 git clone https://gitlab.ifrncn.com.br/ricardokleber/rk-siem.git
 ```
 
-**2. Entre no diretório/pasta do projeto**
+**2. Entre no diretório/pasta do projeto referente ao LAB01**
 
 ```
-cd rk-siem
+cd rk-siem/roteiros/03-lab01
 ```
 
 **3. Levante o RK-SIEM-CORE**
