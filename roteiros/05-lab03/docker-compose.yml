@@ -1,6 +1,63 @@
 services:
- rk-siem-host03:
-#    image: ricardokleber/rk-siem-host03:latest
+  rk-siem-core:
+    image: ricardokleber/rk-siem-core:latest
+    container_name: rk-siem-core
+    environment:
+      - cluster.name=rk-siem-core
+      - node.name=rk-siem-node
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # Ajuste conforme sua RAM disponível
+      - DISABLE_INSTALL_DEMO_CONFIG=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - rk-siem-data:/usr/share/opensearch/data
+    ports:
+      - 9200:9200 # API REST
+      - 9600:9600 # Performance Analyzer
+    networks:
+      - rk-siem-net
+
+  rk-siem-ui:
+    image: ricardokleber/rk-siem-ui:latest
+    container_name: rk-siem-ui
+    ports:
+      - 5601:5601 # Interface Web
+    expose:
+      - 5601
+    command: ["/bin/bash", "-c", "/etc/init.d/opensearch-dashboards start && tail -f /var/log/opensearch-dashboards/opensearch-dashboards.stdout"]
+    restart: always
+    environment:
+      - 'OPENSEARCH_HOSTS=["https://rk-siem-core:9200"]'
+      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=false"
+    networks:
+      - rk-siem-net
+    depends_on:
+      - rk-siem-core
+
+  rk-siem-host01:
+    image: ricardokleber/rk-siem-host01:latest
+    container_name: rk-siem-host01
+    hostname: rk-siem-host01
+    tty: true
+    stdin_open: true
+    restart: always
+
+  rk-siem-host02:
+    image: ricardokleber/rk-siem-host02:latest
+    container_name: rk-siem-host02
+    hostname: rk-siem-host02
+    tty: true
+    stdin_open: true
+    restart: always
+
+  rk-siem-host03:
     image: docker.ifrncn.com.br/rk/rk-windows:latest
     container_name: rk-siem-host03
     devices:
@@ -20,3 +77,9 @@ services:
       DISK_SIZE: "15G" # Tamanho do disco virtual
       USERNAME: "admin"
       PASSWORD: "admin"
+
+volumes:
+  rk-siem-data:
+
+networks:
+  rk-siem-net:
