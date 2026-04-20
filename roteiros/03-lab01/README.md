@@ -67,10 +67,12 @@ action(type="omelasticsearch"
 git clone https://gitlab.ifrncn.com.br/ricardokleber/rk-siem.git
 ```
 
-**2. Entre no diretório/pasta do projeto**
+**2. Entre no diretório/pasta do projeto referente ao LAB01**
+
+(O docker-compose deste diretório já contém as configurações do HOST01)
 
 ```
-cd rk-siem
+cd rk-siem/roteiros/03-lab01
 ```
 
 **3. Levante o RK-SIEM-CORE**
@@ -84,6 +86,10 @@ docker compose up -d rk-siem-core
 ```
 docker compose up -d rk-siem-ui
 ```
+
+(Após alguns segundos você já poderá subir a interface Web RK-SIEM-UI acessando http://localhost:5061 em um navegador)
+
+![](../../assets/rk-siem-login.png)
 
 **5. Levante o RK-SIEM-HOST01**
 
@@ -104,6 +110,56 @@ rsyslogd
 ```
 service ssh start
 ```
+
+***
+
+**7. Acesse o RK-SIEM com as credenciais padrão**
+
+```
+Username: admin | Password: admin
+```
+
+**8. No Menu do canto superior esquerdo, na sessão 'Management' selecione 'Dashboards Management'**
+
+![](../../assets/rk-siem-dashboards-management.png)
+
+**9. Selecione a opção 'Index patterns' para configurar o seu primeiro índice no RK-SIEM (para receber os Logs do HOST01)'**
+
+![](../../assets/rk-siem-index-patterns.png)
+
+**10. Clique no botão 'Create index pattern' para Criar seu primeiro índice**
+
+![](../../assets/rk-siem-botao-create-index-pattern.png)
+
+Observe que o Host 01 já enviou logs para o RK-SIEM (A indicação do índice 'host01-logs' já aparece como fonte disponível)
+
+![](../../assets/rk-siem-visualizacao-host01-logs.png)
+
+**11. Preencha o campo 'Index pattern name' indicando que o índice que será criado deverá receber todo o tráfego de índices começando com 'host01-logs'**
+
+```
+host01-logs*
+```
+
+![](../../assets/rk-siem-index-pattern-name.png)
+
+Clique no botão 'Next step' para o próximo passo.
+
+**12. No campo 'Time field' você deverá indicar;selecionar o 'campo de índice de tempo' usado para indexar e exibir os logs. Clicando na seta surgirá o campo padrão utilizado em Logs '@timestamp'. Clique para selecioná-lo**
+
+```
+@timestamp
+```
+![](../../assets/rk-siem-selecao-timestamp.png)
+
+
+(Clique no botão 'Create index pattern' para finalizar a criação do índice).
+
+**Você já poderá visualizar os logs chegando do 'Host01' na seção 'Discover'**
+
+![](../../assets/rk-siem-secao-discover.png)
+
+![](../../assets/rk-siem-discover-logs-host01.png)
 
 ***
 
