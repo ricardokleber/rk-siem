@@ -44,7 +44,7 @@ Conteúdo adicionado ao arquivo de configuração do Fluent-Bit (*/etc/fluent-bi
 [OUTPUT]
     Name			opensearch
     Match     	    apache-logs-acesso
-    Host			172.18.0.2
+    Host			172.18.0.1
     Port			9200
     Index     	    host02-logs
     HTTP_User 	    admin
@@ -143,7 +143,7 @@ Observe que o Host 02 já enviou logs para o RK-SIEM (A indicação do índice '
 
 ![](../../assets/rk-siem-visualizacao-host02-logs.png)
 
-**11. Preencha o campo 'Index pattern name' indicando que o índice que será criado deverá receber todo o tráfego de índices começando com 'host01-logs'**
+**11. Preencha o campo 'Index pattern name' indicando que o índice que será criado deverá receber todo o tráfego de índices começando com 'host02-logs'**
 
 ```
 host02-logs*
