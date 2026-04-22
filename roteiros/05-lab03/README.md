@@ -131,8 +131,9 @@ docker compose up -d rk-siem-host03
 
 **7. Acesse o HOST03 usando um Navegador (http://localhost:8006) e verifique se o arquivo de configuração do Fluent-Bit está apontando corretamente para o IP do RK-SIEM-CORE**
 
+![](../../assets/rk-siem-lab03-04.png)
 
-**8. Acesse o RK-SIEM com as credenciais padrão**
+**8. Acesse o RK-SIEM (http://localhost:5601) com as credenciais padrão**
 
 ```
 Username: admin | Password: admin
