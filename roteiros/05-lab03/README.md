@@ -109,7 +109,7 @@ docker compose up -d rk-siem-core
 docker compose up -d rk-siem-ui
 ```
 
-(Após alguns segundos você já poderá subir a interface Web RK-SIEM-UI acessando http://localhost:5061 em um navegador)
+(Após alguns segundos você já poderá subir a interface Web RK-SIEM-UI acessando http://localhost:5601 em um navegador)
 
 ![](../../assets/rk-siem-login.png)
 
