@@ -185,4 +185,4 @@ Clique no botão 'Next step' para o próximo passo.
 
 **Assista à Videoaula explicativa sobre o assunto clicando na imagem abaixo:**
 
-<a href="https://www.youtube.com/watch?v=DoedlfxmR6g" target="_blank"><img width="400" height="120" alt="assistavideo" src="../../assets/rk-siem-youtube.png" /></a>
+<a href="https://www.youtube.com/watch?v=DoedlfxmR6g" target="_blank"><img width="400" height="120" alt="assistavideo" src="../../assets/rk-siem-youtube_lab03.png" /></a>
