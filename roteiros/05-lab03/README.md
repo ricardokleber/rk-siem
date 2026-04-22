@@ -153,7 +153,7 @@ Username: admin | Password: admin
 
 Observe que o Host 03 já enviou logs para o RK-SIEM (A indicação do índice 'host03-logs' já aparece como fonte disponível)
 
-![](../../assets/rk-siem-visualizacao-host02-logs.png)
+![](../../assets/rk-siem-lab03-05.png)
 
 **11. Preencha o campo 'Index pattern name' indicando que o índice que será criado deverá receber todo o tráfego de índices começando com 'host03-logs'**
 
@@ -161,7 +161,7 @@ Observe que o Host 03 já enviou logs para o RK-SIEM (A indicação do índice '
 host03-logs*
 ```
 
-![](../../assets/rk-siem-index-pattern-name-02.png)
+![](../../assets/rk-siem-lab03-06.png)
 
 Clique no botão 'Next step' para o próximo passo.
 
@@ -170,7 +170,7 @@ Clique no botão 'Next step' para o próximo passo.
 ```
 @timestamp
 ```
-![](../../assets/rk-siem-selecao-timestamp-02.png)
+![alt text](../../assets/rk-siem-lab03-07.png)
 
 
 (Clique no botão 'Create index pattern' para finalizar a criação do índice).
@@ -179,7 +179,7 @@ Clique no botão 'Next step' para o próximo passo.
 
 ![](../../assets/rk-siem-secao-discover.png)
 
-![](../../assets/rk-siem-discover-logs-host02.png)
+![alt text](../../assets/rk-siem-lab03-08.png)
 
 ***
 
