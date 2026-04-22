@@ -72,7 +72,7 @@ services:
     restart: on-failure
     environment:
       VERSION: "7u" # Define a versão (win11, win10, etc)
-      RAM_SIZE: "2G"   # Mínimo recomendado para Win11
+      RAM_SIZE: "2G"
       CPU_CORES: "2"   # Quantidade de núcleos
       DISK_SIZE: "15G" # Tamanho do disco virtual
       USERNAME: "admin"
