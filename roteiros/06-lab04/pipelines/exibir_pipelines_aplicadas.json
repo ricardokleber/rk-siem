@@ -1,0 +1,1 @@
+GET /_settings?filter_path=*.settings.index.default_pipeline

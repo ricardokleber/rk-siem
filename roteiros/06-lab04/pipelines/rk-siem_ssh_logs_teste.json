@@ -1,0 +1,10 @@
+POST _ingest/pipeline/rk-siem_ssh_logs/_simulate
+{
+  "docs": [
+    {
+      "_source": {
+        "log": "Oct 23 11:30:05 servidor-prod sshd[1234]: Failed password for root from 192.168.1.50 port 54321 ssh2"
+      }
+    }
+  ]
+}

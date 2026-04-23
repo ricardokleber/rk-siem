@@ -1,0 +1,61 @@
+PUT _ingest/pipeline/rk-siem_ssh_logs
+{
+  "description": "Pipeline do RK-SIEM para normalização de logs SSH",
+  "processors": [
+    {
+      "grok": {
+        "field": "log",
+        "patterns": [
+          "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: %{WORD:ssh_event} password for %{USER:user} from %{IP:source_ip} port %{NUMBER:source_port} ssh2",
+          "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: %{WORD:ssh_event} for invalid user %{USER:user} from %{IP:source_ip} port %{NUMBER:source_port} ssh2",
+          "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: Connection closed by (authenticating |)%{IP:source_ip} port %{NUMBER:source_port}"
+        ],
+        "description": "Extrai eventos de Accepted, Failed e Disconnected do SSH"
+      }
+    },
+    {
+      "date": {
+        "field": "timestamp",
+        "formats": ["MMM  d HH:mm:ss", "MMM dd HH:mm:ss"],
+        "target_field": "@timestamp",
+        "description": "Padroniza o tempo vindo do syslog (ex: Oct 10 13:55:36)"
+      }
+    },
+    {
+      "set": {
+        "if": "ctx.ssh_event == 'Accepted'",
+        "field": "event.outcome",
+        "value": "success"
+      }
+    },
+    {
+      "set": {
+        "if": "ctx.ssh_event == 'Failed'",
+        "field": "event.outcome",
+        "value": "failure"
+      }
+    },
+    {
+      "geoip": {
+        "field": "source_ip",
+        "target_field": "geo",
+        "ignore_missing": true,
+        "description": "Enriquecimento: Localiza a origem do acesso"
+      }
+    },
+    {
+      "remove": {
+        "field": ["log", "timestamp", "program"],
+        "ignore_missing": true
+      }
+    }
+  ],
+  "on_failure": [
+    {
+      "set": {
+        "field": "error.message",
+        "value": "Falha no processamento do pipeline rk_siem_ssh_logs"
+      }
+    }
+  ]
+}

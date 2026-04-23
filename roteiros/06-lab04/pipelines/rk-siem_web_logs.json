@@ -1,0 +1,51 @@
+PUT _ingest/pipeline/rk-siem_web_logs
+{
+  "description": "Pipeline do RK-SIEM para normalização de logs HTTP - Ajustado para campo 'log'",
+  "processors": [
+    {
+      "grok": {
+        "field": "log",
+        "patterns": [
+          "%{IPORHOST:source_ip} - %{USER:user_id} \\[%{HTTPDATE:timestamp}\\] \"%{WORD:http_method} %{NOTSPACE:url_path} HTTP/%{NUMBER:http_version}\" %{NUMBER:status_code} %{NUMBER:bytes_sent}"
+        ],
+        "description": "Extrai dados do campo 'log' enviado pelo Fluent-bit"
+      }
+    },
+    {
+      "date": {
+        "field": "timestamp",
+        "formats": [
+          "dd/MMM/yyyy:HH:mm:ss Z"
+        ],
+        "target_field": "@timestamp"
+      }
+    },
+    {
+      "convert": {
+        "field": "status_code",
+        "type": "integer"
+      }
+    },
+    {
+      "user_agent": {
+        "field": "user_agent_string",
+        "target_field": "browser_info",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": ["log", "timestamp"],
+        "ignore_missing": true
+      }
+    }
+  ],
+  "on_failure": [
+    {
+      "set": {
+        "field": "error.message",
+        "value": "Falha no processamento do pipeline rk_siem_web_logs"
+      }
+    }
+  ]
+}
