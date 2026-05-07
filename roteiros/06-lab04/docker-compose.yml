@@ -48,6 +48,8 @@ services:
     tty: true
     stdin_open: true
     restart: always
+    networks:
+      - rk-siem-net
 
 volumes:
   rk-siem-data:
