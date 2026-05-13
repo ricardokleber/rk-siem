@@ -1,4 +1,4 @@
-PUT /teste-logs/_settings
+PUT /ssh-logs/_settings
 {
-  "index.default_pipeline": "rk-siem_web_logs"
+  "index.default_pipeline": "rk-siem_ssh_logs"
 }
