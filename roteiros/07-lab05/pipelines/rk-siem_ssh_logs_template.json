@@ -1,0 +1,24 @@
+PUT _index_template/rk-siem-ssh-template
+{
+  "index_patterns": ["ssh-logs*"],
+  "priority": 100,
+  "template": {
+    "mappings": {
+      "properties": {
+        "source_ip": { "type": "ip" },
+        "geo": {
+          "properties": {
+            "location": { "type": "geo_point" },
+            "country_iso_code": { "type": "keyword" },
+            "city_name": { "type": "keyword" }
+          }
+        },
+        "event": {
+          "properties": {
+            "outcome": { "type": "keyword" }
+          }
+        }
+      }
+    }
+  }
+}
