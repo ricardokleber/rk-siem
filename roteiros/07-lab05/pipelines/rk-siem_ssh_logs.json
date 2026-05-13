@@ -7,7 +7,8 @@ PUT _ingest/pipeline/rk-siem_ssh_logs
         "field": "log",
         "patterns": [
           "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: %{WORD:ssh_event} password for %{USER:user} from %{IP:source_ip} port %{NUMBER:source_port} ssh2",
-          "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: %{WORD:ssh_event} for invalid user %{USER:user} from %{IP:source_ip} port %{NUMBER:source_port} ssh2"
+          "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: %{WORD:ssh_event} for invalid user %{USER:user} from %{IP:source_ip} port %{NUMBER:source_port} ssh2",
+          "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: Connection closed by (authenticating |)%{IP:source_ip} port %{NUMBER:source_port}"
         ],
         "description": "Extrai eventos de Accepted, Failed e Disconnected do SSH"
       }
@@ -34,7 +35,15 @@ PUT _ingest/pipeline/rk-siem_ssh_logs
         "value": "failure"
       }
     },
-       {
+    {
+      "geoip": {
+        "field": "source_ip",
+        "target_field": "geo",
+        "ignore_missing": true,
+        "description": "Enriquecimento: Localiza a origem do acesso"
+      }
+    },
+    {
       "remove": {
         "field": ["log", "timestamp", "program"],
         "ignore_missing": true
@@ -45,7 +54,7 @@ PUT _ingest/pipeline/rk-siem_ssh_logs
     {
       "set": {
         "field": "error.message",
-        "value": "Falha no processamento do pipeline rk-siem_ssh_logs"
+        "value": "Falha no processamento do pipeline rk_siem_ssh_logs"
       }
     }
   ]

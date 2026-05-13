@@ -1,0 +1,4 @@
+PUT /teste-logs/_settings
+{
+  "index.default_pipeline": "rk-siem_web_logs"
+}
