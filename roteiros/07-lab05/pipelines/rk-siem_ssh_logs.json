@@ -1,3 +1,4 @@
+PUT _ingest/pipeline/rk-siem_ssh_logs
 {
   "description": "Pipeline do RK-SIEM para normalização de logs SSH",
   "processors": [
