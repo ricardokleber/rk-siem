@@ -1,4 +1,3 @@
-PUT _ingest/pipeline/rk-siem_ssh_logs
 {
   "description": "Pipeline do RK-SIEM para normalização de logs SSH",
   "processors": [
@@ -9,26 +8,39 @@ PUT _ingest/pipeline/rk-siem_ssh_logs
           "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: %{WORD:ssh_event} password for %{USER:user} from %{IP:source_ip} port %{NUMBER:source_port} ssh2",
           "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: %{WORD:ssh_event} for invalid user %{USER:user} from %{IP:source_ip} port %{NUMBER:source_port} ssh2",
           "%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:host} %{WORD:program}\\[%{NUMBER:pid}\\]: Connection closed by %{IP:source_ip} port %{NUMBER:source_port}"
+        ],
+        "on_failure": [
+          {
+            "set": {
+              "field": "tags",
+              "value": ["_grok_ssh_parse_failure"]
+            }
+          }
         ]
       }
     },
     {
       "date": {
         "field": "timestamp",
-        "formats": ["MMM  d HH:mm:ss", "MMM dd HH:mm:ss"],
+        "formats": [
+          "MMM  d HH:mm:ss",
+          "MMM dd HH:mm:ss",
+          "MMM d HH:mm:ss"
+        ],
+        "timezone": "America/Recife",
         "target_field": "@timestamp"
       }
     },
     {
       "set": {
-        "if": "ctx.ssh_event == 'Accepted'",
+        "if": "ctx.containsKey('ssh_event') && ctx.ssh_event == 'Accepted'",
         "field": "event.outcome",
         "value": "success"
       }
     },
     {
       "set": {
-        "if": "ctx.ssh_event == 'Failed' || ctx.ssh_event == null",
+        "if": "!ctx.containsKey('ssh_event') || ctx.ssh_event == 'Failed'",
         "field": "event.outcome",
         "value": "failure"
       }
@@ -42,7 +54,11 @@ PUT _ingest/pipeline/rk-siem_ssh_logs
     },
     {
       "remove": {
-        "field": ["log", "timestamp", "program"],
+        "field": [
+          "log",
+          "timestamp",
+          "program"
+        ],
         "ignore_missing": true
       }
     }
